@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-// import PropTypes from 'prop-types';
 import { MDBModal, MDBModalBody, MDBModalHeader } from 'mdbreact';
 import Card from './imageCard.js';
 
@@ -15,6 +14,7 @@ const CardGrid = ({ image }) => {
   const [modalImage, setModalImage] = useState('');
   const [modalImageAlt, setModalImageAlt] = useState('');
 
+  // Image modal function
   const showImageModal = (imageSrc, imageAlt) => {
     setModalOpen(!modalOpen);
     setModalImage(imageSrc);

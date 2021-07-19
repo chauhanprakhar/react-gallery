@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
 import toast, { Toaster } from 'react-hot-toast';
 
 /**
@@ -32,17 +31,20 @@ const SearchBox = ({ fetchCustomImages, searchResultsTitle }) => {
     setShowSearchHistory(!showSearchHistory);
   };
 
+  // render search history on clicking inputbox 
   const renderSearchHistory = () => {
     const historyItems = getSearchHistoryItems();
     return historyItems.map((_item) => <li className="list-group-item" key={_item} onClick={() => updateSearchInput(_item)}>{_item}</li>);
   };
 
+  // function to show history if existed on clicking input box
   const showPastSearches = () => {
     if (getSearchHistoryItems()) {
       setShowSearchHistory(!showSearchHistory);
     }
   };
 
+  //storing items in localstorage
   const addSearchHistory = (searchTitle) => {
     const historyItems = getSearchHistoryItems();
     if (!historyItems) {
@@ -52,11 +54,13 @@ const SearchBox = ({ fetchCustomImages, searchResultsTitle }) => {
     }
   };
 
+
   const handleOnChange = (event) => {
     const searchTitle = event.target.value.toLowerCase();
     setInputSearchTitle(searchTitle);
   };
 
+  // removing search history
   const clearSearchHistory = () => {
     localStorage.removeItem('searchHistory');
     setShowSearchHistory(false);

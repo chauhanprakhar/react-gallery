@@ -11,9 +11,10 @@ function App() {
   const [customSearchTitle, setCustomSearchTitle] = useState('');
   const [searchResultsTitle, setSearchResultsTitle] = useState('');
   
+  // fetching api with axios
   const getData =(title)=> {
-    const url = title ?`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5adc0ef7be763da42ce94e17d0a3b3cf&text=${title}&format=json&nojsoncallback=1` 
-    : `https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=5adc0ef7be763da42ce94e17d0a3b3cf&format=json&nojsoncallback=1`;
+    const url = title ?`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=9b2f3ccb1bc0bd1e9d090a77dd6e59c2&text=${title}&format=json&nojsoncallback=1` 
+    : `https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=9b2f3ccb1bc0bd1e9d090a77dd6e59c2&format=json&nojsoncallback=1`;
     axios.get(url)
     .then(Response => setData(Response.data.photos.photo))
     .then(err=> console.log(err))
@@ -21,6 +22,7 @@ function App() {
     setSearchResultsTitle((data && data.length && title) ? `Showing results for "${title}"` : '');
     setCustomSearchTitle(title)
   }
+
   useEffect(() => {
     getData();
   }, []);
